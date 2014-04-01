@@ -1,0 +1,43 @@
+<sitemesh>
+	<!--<mapping path="*" decorator="/WEB-INF/default/decorator.jsp"/>-->
+	<!--
+		因为使用jetbrick-template作为 .jetx的渲染器,
+		并且已经在jetbrick-template.properties中配置了template.path这个模板路径
+			"template.path=/WEB-INF/jetx/",
+				因此,对于.jetx文件的实际路径应该是"template.path"+"/default/decorator.jetx" 组成的,
+				也就是"/WEB-INF/jetx/"目录下面的"/sitemesh_decorator/default/decorator.jetx"
+			<mapping path="*" decorator="/sitemesh_decorator/default/decorator.jetx"/>
+
+				 -->
+	
+	<mapping path="/httl/*" decorator="/WEB-INF/sitemesh_decorator/default/decorator.httl"/>
+	<mapping path="/jetx/*" decorator="/WEB-INF/sitemesh_decorator/default/decorator.jetx"/>
+	<!--tip:01, Map default decorator. This shall be applied to all paths if no other paths match. -->
+	<!--
+			<mapping decorator="/default-decorator.html"/>
+		-->
+
+	<!--tip:02, Map decorators to path patterns. -->
+	<!--
+			<mapping path="/admin/*" decorator="/another-decorator.html"/>
+			<mapping path="/*.special.jsp" decorator="/special-decorator.html"/>
+			<mapping path="/pf/*" decorator="/WEB-INF/default/decorator.jsp"/>
+		-->
+	<!--tip:03, Alternative convention. This is more verbose but allows multiple decorators
+		   to be applied to a single path. -->
+	<!--
+			<mapping>
+				<path>/articles/*</path>
+				<decorator>/decorators/article.html</decorator>
+				<decorator>/decorators/two-page-layout.html</decorator>
+				<decorator>/decorators/common.html</decorator>
+			</mapping>
+		-->
+	<!--tip:04, Exclude path from decoration. -->
+	<!--
+			<mapping path="/javadoc/*" exclue="true"/>
+			<mapping path="/brochures/*" exclue="true"/>
+		-->
+	<mapping path="/resources/*" exclude="true"/>
+	<mapping path="/html/*" exclude="true"/>
+</sitemesh>
